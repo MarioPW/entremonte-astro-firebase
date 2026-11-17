@@ -1,0 +1,24 @@
+---
+/**
+ * Galería de imágenes (isla en vivo: altas/ediciones de `/admin` sin rebuild).
+ */
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import GalleryGrid from '../components/islands/GalleryGrid';
+import { galleryService } from '../lib/services';
+
+const images = await galleryService.getImages();
+---
+
+<Base title="Galería — Entremonte Cabañas" description="Conoce Entremonte Cabañas en imágenes: cabañas, jardines, piscina y paisajes de La Vega, Cundinamarca.">
+  <PageHead title="Galería" current="Galería" />
+
+  <section class="shell py-14">
+    <div class="section-head">
+      <span class="eyebrow">Entremonte</span>
+      <h2>Disfruta de paisajes increíbles.</h2>
+    </div>
+
+    <GalleryGrid client:load images={images} />
+  </section>
+</Base>

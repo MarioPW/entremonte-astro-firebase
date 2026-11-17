@@ -1,0 +1,32 @@
+---
+/**
+ * Listado completo de cabañas (datos de build + refresco en vivo vía isla).
+ */
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import CabinsGrid from '../components/islands/CabinsGrid';
+import { cabinService } from '../lib/services';
+
+const cabins = await cabinService.getAll();
+---
+
+<Base
+  title="Cabañas — Entremonte Cabañas"
+  description="Cabañas en La Vega, Cundinamarca, con jacuzzi climatizado, terraza y desayuno incluido. Consulta precios y disponibilidad."
+>
+  <PageHead title="Cabañas" current="Cabañas" />
+
+  <section class="shell py-14">
+    <CabinsGrid cabins={cabins} client:load />
+  </section>
+
+  <section class="shell pb-6 text-center">
+    <p class="text-ink-500">¿Tienes dudas sobre disponibilidad o tarifas?</p>
+    <div class="mt-4 flex flex-wrap justify-center gap-3">
+      <a href="/#reserva" class="btn btn-primary">Enviar solicitud de reserva</a>
+      <a href="https://wa.me/573132839584" target="_blank" rel="noopener" class="btn btn-accent">
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </section>
+</Base>

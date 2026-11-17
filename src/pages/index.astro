@@ -1,0 +1,169 @@
+---
+/**
+ * Home. Secciones: hero (isla), bienvenida, cabañas destacadas,
+ * reserva (isla auth), reseñas y cierre.
+ * Todos los datos se resuelven en build vía los servicios unificados.
+ */
+import Base from '../layouts/Base.astro';
+import HeroSlider from '../components/islands/HeroSlider';
+import AuthBooking from '../components/islands/AuthBooking';
+import FeaturedCabins from '../components/islands/FeaturedCabins';
+import GalleryHighlights from '../components/islands/GalleryHighlights';
+import ReviewsCarousel from '../components/islands/ReviewsCarousel';
+import { cabinService, galleryService, reviewService, sliderService } from '../lib/services';
+import { AMENITIES } from '../data/amenities';
+
+const [slides, cabins, reviews, gallery] = await Promise.all([
+  sliderService.getSlides(),
+  cabinService.getAll(),
+  reviewService.getAll(),
+  galleryService.getImages(),
+]);
+
+const featured = cabins.slice(0, 4);
+const highlights = gallery.slice(0, 4);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Hotel',
+  name: 'Cabañas Entremonte',
+  description: 'Cabañas de descanso rodeadas de naturaleza en La Vega, Cundinamarca.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'La Vega',
+    addressRegion: 'Cundinamarca',
+    addressCountry: 'CO',
+  },
+  telephone: '+573132839584',
+};
+---
+
+<Base
+  title="Entremonte Cabañas — Descanso en la naturaleza · La Vega, Cundinamarca"
+  description="Cabañas rurales con jacuzzi, terraza y desayuno incluido. Reserva tu estadía en Entremonte Cabañas, La Vega, Cundinamarca."
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <HeroSlider
+    client:load
+    slides={slides}
+    heading="Entremonte Cabañas"
+    subheading="Naturaleza, silencio y descanso total en La Vega, Cundinamarca."
+  />
+
+  <!-- Bienvenida + amenidades -->
+  <section class="shell grid gap-12 py-16 md:grid-cols-2 md:py-24">
+    <div>
+      <div class="section-head is-start">
+        <span class="eyebrow">Nosotros</span>
+        <h2>Tu refugio entre los árboles</h2>
+      </div>
+      <p class="mt-5 leading-relaxed">
+        ¡Te damos la bienvenida a Entremonte Cabañas! Gracias por elegir nuestro alojamiento. Esperamos que
+        disfrutes de la tranquilidad y belleza que nos rodea. Estamos aquí para hacer tu estadía inolvidable.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/about-us" class="btn btn-primary">Conócenos</a>
+        <a href="/gallery" class="btn btn-secondary">Ver galería</a>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-x-8 gap-y-3 self-center sm:grid-cols-2">
+      {
+        AMENITIES.map((amenity) => (
+          <li class="flex items-start gap-2.5 text-sm">
+            <svg
+              class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            </svg>
+            <span>{amenity}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Cabañas destacadas (isla en vivo: refleja /admin sin recompilar) -->
+  <section class="bg-brand-50/60 py-16 md:py-20">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Alojamiento</span>
+        <h2>Nuestras cabañas</h2>
+      </div>
+
+      <FeaturedCabins client:load cabins={featured} />
+
+      <div class="mt-10 text-center">
+        <a href="/cabins" class="btn btn-primary">
+          Ver todas las cabañas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserva -->
+  <section id="reserva" class="shell scroll-mt-28 grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
+    <div>
+      <div class="section-head is-start">
+        <span class="eyebrow">Reservas</span>
+        <h2>Planifica tu escapada</h2>
+      </div>
+      <p class="mt-5 max-w-lg leading-relaxed">
+        Ingresa con tu cuenta y envíanos tu solicitud de reserva con las fechas de entrada y salida. Te
+        confirmamos disponibilidad por WhatsApp en el mismo día. También puedes reservar de inmediato en
+        Booking.com.
+      </p>
+
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a
+          href="https://www.booking.com/hotel/co/entremonte-cabanas.es.html"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-accent"
+        >
+          Reservar en Booking.com
+        </a>
+        <a href="https://wa.me/573132839584" target="_blank" rel="noopener" class="btn btn-outline">
+          WhatsApp directo
+        </a>
+      </div>
+    </div>
+
+    <AuthBooking client:load />
+  </section>
+
+  <!-- Reseñas -->
+  {
+    reviews.length > 0 && (
+      <section class="bg-brand-50/60 py-16 md:py-20">
+        <div class="shell">
+          <div class="section-head">
+            <span class="eyebrow">Comentarios</span>
+            <h2>¿Qué opinan nuestros huéspedes?</h2>
+          </div>
+
+          <ReviewsCarousel client:load reviews={reviews} />
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Cierre galería -->
+  <section class="shell py-16 md:py-20">
+    <div class="section-head">
+      <span class="eyebrow">Galería</span>
+      <h2>Un adelanto de lo que te espera</h2>
+    </div>
+
+    <GalleryHighlights client:load images={highlights} />
+
+    <div class="mt-8 text-center">
+      <a href="/gallery" class="btn btn-primary">Ver galería completa</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,108 @@
+---
+/**
+ * Contacto: datos del alojamiento, mapa y canales directos.
+ * El formulario original estaba deshabilitado (action="#") → se sustituye
+ * por enlaces directos a WhatsApp y correo.
+ */
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+
+const MAPS_URL =
+  'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3974.389433024972!2d-74.3248439240094!3d5.040439738616649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1773273809056!5m2!1ses!2sco';
+
+const channels = [
+  {
+    label: 'Ubicación',
+    value: 'Vereda Cacahual / La Vega, Cundinamarca, 253617 La Vega, Colombia',
+    href: 'https://www.google.com/maps/search/?api=1&query=Entremonte+Cabanas+La+Vega+Cundinamarca',
+    external: true,
+  },
+  {
+    label: 'Teléfono',
+    value: '(+57) 313 2839584',
+    href: 'tel:+573132839584',
+    external: false,
+  },
+  {
+    label: 'WhatsApp',
+    value: '+57 313 2839584',
+    href: 'https://wa.me/573132839584',
+    external: true,
+  },
+  {
+    label: 'Email',
+    value: 'entremonte.cabañas@gmail.com',
+    href: 'mailto:entremonte.cabañas@gmail.com',
+    external: false,
+  },
+  {
+    label: 'Facebook',
+    value: 'Entremonte Cabañas',
+    href: 'https://www.facebook.com/p/Entremonte-Caba%C3%B1as-100083511781197/',
+    external: true,
+  },
+];
+---
+
+<Base
+  title="Contáctanos — Entremonte Cabañas"
+  description="Contacta Entremonte Cabañas en La Vega, Cundinamarca: teléfono, WhatsApp, correo y mapa."
+>
+  <PageHead title="Contáctanos" current="Contáctanos" />
+
+  <section class="shell grid gap-12 py-14 md:grid-cols-2 md:py-20">
+    <div>
+      <h2 class="text-3xl">Hablemos</h2>
+      <p class="mt-4 leading-relaxed">
+        Contáctanos a través de nuestras redes sociales o los siguientes medios. Con gusto resolveremos tus dudas
+        sobre disponibilidad, tarifas y servicios.
+      </p>
+
+      <dl class="mt-8 space-y-5">
+        {
+          channels.map((channel) => (
+            <div class="border-l-2 border-brand-500 pl-4">
+              <dt class="text-xs font-semibold uppercase tracking-wider text-brand-500">{channel.label}</dt>
+              <dd class="mt-1">
+                <a
+                  href={channel.href}
+                  target={channel.external ? '_blank' : undefined}
+                  rel={channel.external ? 'noopener noreferrer' : undefined}
+                  class="text-ink-900 transition hover:text-brand-500"
+                >
+                  {channel.value}
+                  {channel.external && <span aria-hidden="true"> ↗</span>}
+                </a>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="https://wa.me/573132839584" target="_blank" rel="noopener" class="btn btn-primary">
+          Escríbenos por WhatsApp
+        </a>
+        <a
+          href="https://www.booking.com/hotel/co/entremonte-cabanas.es.html"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-accent"
+        >
+          Reserva en Booking.com
+        </a>
+      </div>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl border border-brand-100 shadow-sm">
+      <iframe
+        src={MAPS_URL}
+        title="Mapa de ubicación de Entremonte Cabañas"
+        class="h-[420px] w-full"
+        style="border:0;"
+        loading="lazy"
+        allowfullscreen=""
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+</Base>

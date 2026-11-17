@@ -1,0 +1,49 @@
+---
+/**
+ * Detalle de cabaña. Las rutas se generan en build desde el servicio unificado
+ * (getStaticPaths) y el contenido se hidrata en cliente con `CabinDetail`,
+ * que refresca los datos desde Firestore → los cambios del panel admin se
+ * reflejan sin volver a compilar.
+ */
+import Base from '../../layouts/Base.astro';
+import type { Cabin } from '../../lib/types';
+import { cabinService } from '../../lib/services';
+import { formatCOP } from '../../lib/pricing';
+import CabinDetail from '../../components/islands/CabinDetail';
+
+export async function getStaticPaths() {
+  const cabins = await cabinService.getAll();
+
+  return cabins.map((cabin) => ({
+    params: { id: cabin.id },
+    props: { cabin },
+  }));
+}
+
+interface Props {
+  cabin: Cabin;
+}
+
+const { cabin } = Astro.props;
+// Tarifas exclusivamente de Firestore; sin precios globales de respaldo.
+const priceText =
+  cabin.priceWeekday !== null && cabin.priceWeekend !== null
+    ? `, desde ${formatCOP(cabin.priceWeekday)} COP por noche entre semana (${formatCOP(cabin.priceWeekend)} COP fines de semana y festivos)`
+    : '';
+---
+
+<Base
+  title={`${cabin.name} — Entremonte Cabañas`}
+  description={`${cabin.name}: hasta ${cabin.capacity} personas${priceText}. ${cabin.description.slice(0, 120)}`}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    name: cabin.name,
+    description: cabin.description,
+    numberOfRooms: 1,
+    maximumAttendeeCapacity: cabin.capacity,
+    image: cabin.images[0],
+  }}
+>
+  <CabinDetail cabin={cabin} client:load />
+</Base>
