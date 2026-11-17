@@ -1,0 +1,72 @@
+[
+  {
+    "id": "8d2438d0-86df-4f29-8ecd-4de5066f6fe9",
+    "name": "Cabaña 3",
+    "capacity": 2,
+    "available": true,
+    "description": "Magia entre los árboles\n\n\n\nVive una experiencia diferente en nuestra cabaña con terraza en el árbol.\n\nUn ambiente natural y romántico para disfrutar, relajarte en el jacuzzi y reconectarte con lo esencial.\n\nIdeal para escapadas únicas y memorables.",
+    "images": [
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/kddxmspi6xr3nmxreq5d.jpg"
+    ],
+    "services": [
+      "Cafetera",
+      "Parqueadero privado",
+      "Malla catamarán",
+      "Barra de sonido",
+      "WiFi",
+      "Jacuzzi climatizado",
+      "Desayuno tipo americano"
+    ],
+    "priceWeekday": null,
+    "priceWeekend": null
+  },
+  {
+    "id": "d2eea3cc-2dd7-4632-a8a1-6d39d35a8324",
+    "name": "Cabaña 2",
+    "capacity": 2,
+    "available": true,
+    "description": "Encanto en madera con cama en altillo.\n\n\n\nDiseño con acabados en madera y una cama en el altillo que hace de esta cabaña una experiencia única.\n\nPerfecta para quienes aman los espacios acogedores y diferentes, con jacuzzi, WiFi y detalles cálidos que enamoran.",
+    "images": [
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/qjzxgf6d4tqqwhozmvfz.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679189/e3rbbdbxghrphh2ugfjg.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/hlht5tlsyi1ieawnwudd.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/xnwqhjbrzk22xf6c48ck.jpg"
+    ],
+    "services": [
+      "Cafetera",
+      "Parqueadero privado",
+      "Malla catamarán",
+      "Barra de sonido",
+      "WiFi",
+      "Jacuzzi climatizado",
+      "Desayuno tipo americano"
+    ],
+    "priceWeekday": null,
+    "priceWeekend": null
+  },
+  {
+    "id": "e817a1bc-0a37-4466-a831-c07746abd62b",
+    "name": "Cabaña 1",
+    "capacity": 2,
+    "available": true,
+    "description": "Privacidad y descanso total\n\n\n\nIdeal para parejas que buscan desconectarse.\n\nRodeada de naturaleza y con jacuzzi climatizado, malla catamarán y desayuno incluido.\n\nTu refugio perfecto para relajarte sin interrupciones.",
+    "images": [
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/hlht5tlsyi1ieawnwudd.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679190/xnwqhjbrzk22xf6c48ck.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679191/fmv9aftdznhe7p7c8973.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679191/cipwdoyfvc9lolybdmxm.jpg",
+      "https://res.cloudinary.com/ditg9carq/image/upload/v1794679192/kdqj7ytaar6vrit9lqdx.jpg"
+    ],
+    "services": [
+      "Cafetera",
+      "Parqueadero privado",
+      "Malla catamarán",
+      "Barra de sonido",
+      "WiFi",
+      "Jacuzzi climatizado",
+      "Desayuno tipo americano"
+    ],
+    "priceWeekday": null,
+    "priceWeekend": null
+  }
+]

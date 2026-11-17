@@ -1,0 +1,83 @@
+[
+  {
+    "user": {
+      "name": "Rodriguez",
+      "avatar": null
+    },
+    "creation_date": "28 de septiembre de 2025",
+    "rating": 5,
+    "comment": "Expectacular muy contentos. Tiene una vista y ambiente muy hermoso, se escuchan los pajaritos, es un lugar para perderse y vivir el momento. El dueño y el personal es muy gentil, es importante tener claro que está ubicado en un ambiente campo/verde, para lo que nos gusta está perfecto. Es un poco retirado de la Vega pero nos disfrutamos la vista y el paseo, ese es el plan."
+  },
+  {
+    "user": {
+      "name": "Gerardo",
+      "avatar": null
+    },
+    "creation_date": "15 de febrero de 2026",
+    "rating": 5,
+    "comment": "Excepcional. Espectacular en todo sentido, todo..."
+  },
+  {
+    "user": {
+      "name": "Baquero",
+      "avatar": null
+    },
+    "creation_date": "25 de enero de 2026",
+    "rating": 5,
+    "comment": "Fantástico. La atención fue excepcional. El lugar y la cabaña nos parecieron muy bonitos. La comida estaba deliciosa y la llevaron a la hora indicada. Fue perfecto para desconectarnos."
+  },
+  {
+    "user": {
+      "name": "Mauricio",
+      "avatar": null
+    },
+    "creation_date": "19 de enero de 2026",
+    "rating": 5,
+    "comment": "Lo recomiendo mil veces, cumple con toda mi expectativa, calidad - precio - ambiente. No falta nada. La cabaña, el aseo, la presentación, los commodities, el sitio, la atención. No tengo una sola queja, todo fue espectacular."
+  },
+  {
+    "user": {
+      "name": "Liz",
+      "avatar": null
+    },
+    "creation_date": "16 de enero de 2026",
+    "rating": 5,
+    "comment": "Que lugar tan tranquilo. Es una cabaña muy comoda con todo lo necesario, cuenta con equipo para escuchar musica, nevera, un pequeño ventilador, jacuzzi y una vista increíble. Queda como a 40 minutos de la vega en carro sin embargo la via esta en buen estado, la lejania vale la pena. La atención fue muy buena, la comida deliciosa y sobre todo la paz que se siente es lo mejor."
+  },
+  {
+    "user": {
+      "name": "Diana",
+      "avatar": null
+    },
+    "creation_date": "27 de diciembre de 2025",
+    "rating": 5,
+    "comment": "Excepcional. La atención, la ubicación y la tranquilidad."
+  },
+  {
+    "user": {
+      "name": "Nydia",
+      "avatar": null
+    },
+    "creation_date": "21 de diciembre de 2025",
+    "rating": 5,
+    "comment": "Fantástico. Acogedor, limpio y un buen servicio."
+  },
+  {
+    "user": {
+      "name": "Maria",
+      "avatar": null
+    },
+    "creation_date": "18 de noviembre de 2025",
+    "rating": 5,
+    "comment": "Escapada Romántica. El sitio es mágico ideal para una escapada romántica, la atención en todo momento es 10/10..."
+  },
+  {
+    "user": {
+      "name": "Karen",
+      "avatar": null
+    },
+    "creation_date": "27 de octubre de 2025",
+    "rating": 5,
+    "comment": "Perfecto y lindo todo. Instalaciones muy lindas, buen servicio."
+  }
+]
