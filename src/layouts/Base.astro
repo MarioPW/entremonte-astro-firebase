@@ -1,0 +1,57 @@
+---
+/**
+ * Layout base de la sitio: <head>, navegación y pie.
+ * Todas las páginas envuelven su contenido con este layout.
+ * Fuentes self-hosted (Fontsource) → sin render-blocking a terceros.
+ */
+import '../styles/global.css';
+import '@fontsource/lora/400.css';
+import '@fontsource/lora/600.css';
+import '@fontsource/lora/700.css';
+import '@fontsource/cabin/400.css';
+import '@fontsource/cabin/500.css';
+import '@fontsource/cabin/600.css';
+import '@fontsource/cabin/700.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Datos estructurados JSON-LD (SEO). */
+  jsonLd?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description = 'Cabañas rurales en La Vega, Cundinamarca. Naturaleza, jacuzzi y descanso en Entremonte Cabañas.',
+  jsonLd,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/img/entremonte-logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

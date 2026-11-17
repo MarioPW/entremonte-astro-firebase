@@ -1,0 +1,19 @@
+---
+/** Encabezado de página con breadcrumbs (era .breadcrumb-section). */
+interface Props {
+  title: string;
+  current: string;
+}
+const { title, current } = Astro.props;
+---
+
+<section class="page-head">
+  <div class="shell">
+    <h1>{title}</h1>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-white">{current}</span>
+    </nav>
+  </div>
+</section>

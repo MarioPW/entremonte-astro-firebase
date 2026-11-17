@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/*
+ * Design system — Entremonte (Fase 2).
+ * Tailwind v4: los tokens viven en @theme y generan las utilidades.
+ */
+@theme {
+  --font-display: "Lora", ui-serif, serif;
+  --font-body: "Cabin", ui-sans-serif, system-ui, sans-serif;
+
+  /* Verde bosque de montaña */
+  --color-brand-50: #f2f7f4;
+  --color-brand-100: #dcebe2;
+  --color-brand-200: #b9d7c6;
+  --color-brand-500: #2f6f4e;
+  --color-brand-600: #25593f;
+  --color-brand-700: #1d4732;
+  --color-brand-900: #122b1f;
+
+  /* Acento cálido (CTA Booking, estrellas, detalles) */
+  --color-accent-400: #dfc15e;
+  --color-accent-500: #c9a227;
+  --color-accent-600: #a9871c;
+
+  --color-ink-500: #5b6660;
+  --color-ink-700: #37403b;
+  --color-ink-900: #1b211e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-body text-ink-700 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink-900;
+  }
+
+  ::selection {
+    @apply bg-brand-500 text-white;
+  }
+}
+
+@layer components {
+  /* Contenedor de página */
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5;
+  }
+
+  /* Título de sección (era .section-title) */
+  .section-head {
+    @apply mb-10 text-center;
+  }
+
+  .eyebrow {
+    @apply block text-xs font-semibold uppercase tracking-[0.2em] text-brand-500;
+  }
+
+  .section-head h2 {
+    @apply mt-2 text-3xl md:text-4xl;
+  }
+
+  /* Variante alineada a la izquierda sin margen inferior */
+  .section-head.is-start {
+    @apply mb-0 text-left;
+  }
+
+  /* Botón primario (era .primary-btn) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-wide transition duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-ink-900 hover:bg-accent-400 focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply border border-white/40 text-white backdrop-blur hover:bg-white/10;
+  }
+
+  /* Botón secundario sobre fondo claro */
+  .btn-secondary {
+    @apply bg-brand-50 text-brand-600 hover:bg-brand-100 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+  }
+
+  /* Botón con contorno */
+  .btn-outline {
+    @apply bg-white text-brand-600 ring-1 ring-brand-200 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+  }
+
+  /* Breadcrumb superior de página (era .breadcrumb-section) */
+  .page-head {
+    @apply bg-brand-700 py-14 text-white md:py-20;
+  }
+
+  .page-head h1 {
+    @apply text-3xl text-white md:text-4xl;
+  }
+
+  .page-head .crumbs {
+    @apply mt-3 flex items-center gap-2 text-sm text-white/70;
+  }
+
+  .page-head .crumbs a {
+    @apply hover:text-accent-400;
+  }
+
+  /* Tarjeta de imagen con texto superpuesto (era .gallery-item / .ap-service-item) */
+  .photo-card {
+    @apply relative block overflow-hidden rounded-2xl bg-brand-100;
+  }
+
+  .photo-card img {
+    @apply h-full w-full object-cover transition duration-500 group-hover:scale-105;
+  }
+
+  .photo-card .caption {
+    @apply absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-white;
+  }
+
+  .photo-card .caption h3 {
+    @apply text-xl text-white;
+  }
+}
