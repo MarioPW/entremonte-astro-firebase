@@ -1,0 +1,22 @@
+---
+/**
+ * Panel de administración (`/admin`).
+ *
+ * Página 100% estática: la autenticación, el guard de rol y todo el CRUD
+ * (Firestore + Storage) corren en cliente dentro de `AdminApp`.
+ */
+import Base from '../layouts/Base.astro';
+import AdminApp from '../components/islands/AdminApp';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Administración · Entremonte Cabañas' } = Astro.props;
+---
+
+<Base title={title} description="Panel privado de administración de Entremonte Cabañas.">
+  <div class="shell py-10 md:py-14">
+    <AdminApp client:only="preact" />
+  </div>
+</Base>
